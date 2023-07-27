@@ -30,7 +30,7 @@ int file_mode(char *argv[])
 	if (fd == -1)
 	{
 		no_such_file_error(argv[0], argv[1]);
-		exit(2);
+		exit(127);
 	}
 
 	read_bytes = get_input(&bytes, fd);
