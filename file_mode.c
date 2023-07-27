@@ -8,9 +8,8 @@
 void no_such_file_error(char *p_name, char *f_name)
 {
 	write(STDERR_FILENO, p_name, _strlen(p_name));
-	write(STDERR_FILENO, ": 0: cannot open ", 17);
+	write(STDERR_FILENO, ": 0: Can't open ", 16);
 	write(STDERR_FILENO, f_name, _strlen(f_name));
-	write(STDERR_FILENO, ": No such file", 14);
 	write(STDERR_FILENO, "\n", 1);
 }
 
