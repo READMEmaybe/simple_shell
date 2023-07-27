@@ -1,6 +1,20 @@
 #include "shell.h"
 
 /**
+ * no_such_file_error - Displays an error message for a non-existent file.
+ * @p_name: Name of the program.
+ * @f_name: Name of the non-existent file.
+ */
+void no_such_file_error(char *p_name, char *f_name)
+{
+	write(STDERR_FILENO, p_name, _strlen(p_name));
+	write(STDERR_FILENO, ": 0: cannot open ", 17);
+	write(STDERR_FILENO, f_name, _strlen(f_name));
+	write(STDERR_FILENO, ": No such file", 14);
+	write(STDERR_FILENO, "\n", 1);
+}
+
+/**
  * file_mode - Executes commands from a file in non-interactive mode.
  * @argv: Array of strings representing the program name and arguments.
  *
@@ -15,8 +29,8 @@ int file_mode(char *argv[])
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
-		perror(argv[0]);
-		exit(1);
+		no_such_file_error(argv[0], argv[1]);
+		exit(2);
 	}
 
 	read_bytes = get_input(&bytes, fd);
