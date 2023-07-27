@@ -98,7 +98,7 @@ int execute(char *p_name, char **args, char *expression)
 		write(STDERR_FILENO, ": not found\n", 12);
 		code = 127;
 	}
-	else 
+	else
 		code = execute_command(command, args);
 	free_mem(args, expression, command);
 
